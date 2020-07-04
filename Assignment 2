@@ -1,24 +1,13 @@
-CREATE TABLE employee 
-(
- EMPLOYEE_ID NUMBER CONSTRAINT EMP_ID primary key,
- EMPLOYEE_NAME VARCHAR2(20) NOT NULL,
- EMPLOYEE_ADDRESS VARCHAR2(20) CONSTRAINT EMP_ADD check ( EMPLOYEE_ADDRESS <>ALL ('Newyork','London','Paris')),
- SALARY NUMBER CONSTRAINT EMP_SAL check ( salary between 20000 and 30000),
- COMPANY_ADDRESS varchar2(20) default 'ASV Suntech Park'
+
+create table employee
+(  
+      EmployeeID number CONSTRAINT PKEMPID primary key,
+      EmployeeName varchar2(10) ,
+      EmployeeAddress varchar2(20) CONSTRAINT CHKEMPADD check ( EmployeeAddress not in( 'Newyork', 'London' ,'Paris' ) ),
+      salary number CONSTRAINT CHKEMPSAL check ( salary between 20000 and 30000),
+      companyaddress varchar2(20) default 'ASV Suntech Park'
 )
 
+INSERT into employee values (2, 'kamal', 'Bangalore', 25000, default);
 
-create table SALARY
-(
-     EmployeeID number ,
-     Employee_PF number ,
-     Employee_HRA number ,
-     CONSTRAINT FK_PID FOREIGN KEY (EmployeeID ) REFERENCES EMPLOYEE(EmployeeID ),
-     CONSTRAINT EM_PF check ( Employee_PF > 0),
-     CONSTRAINT EM_HRA check ( Employee_HRA > 0)
-)
-
-insert into employee values (115, 'Mohan', 'Delhi', 25000, default); 
-insert into salary values (115, 98, 12);
 select * from employee;
-select * from salary
