@@ -1,0 +1,33 @@
+import java.util.Scanner;
+public class Product {
+	int productid = 0;
+	double ReatailPrice1 = 22.50;
+	double ReatailPrice2 = 44.50;
+	double ReatailPrice3 = 9.98;
+	int quantity = 0;
+	Scanner sc =new Scanner(System.in);
+	public void display() {
+		System.out.println("enter the productid: ");
+		productid =sc.nextInt();
+		System.out.println("enter the quantity: ");
+		quantity =sc.nextInt();
+	    switch(productid) {
+	    case 1:
+	    	System.out.println("Total Amount :"+(ReatailPrice1*quantity));
+	    	break;
+	    case 2:
+	    	System.out.println("Total Amount :"+(ReatailPrice2*quantity));
+	    	break;
+	    case 3:
+	    	System.out.println("Total Amount :"+(ReatailPrice3*quantity));
+	    	break;
+	    default :
+	    	System.out.println("invalid productid");
+	    }
+	}
+	public static void main(String args[]) {
+		Product p= new Product();
+		p.display();
+	}	
+}
+
