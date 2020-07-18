@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>USER FORM</title>
+<script type="text/javascript" src="validate.js"></script>
+</head>
+<body>
+<center>
+<h1><font color="blue">User Form</font></h1>
+</center>
+<form> 
+<table border="3" align="center" bgcolor="pink" cellspacing="5" cellpadding="5">
+<tr>
+<td>User Name :</td>
+<td><input type="text" name="username" id="userName"></td>
+</tr>
+<tr>
+<td>Spouse Name :</td>
+<td><input type="text" name="spousename" id="spouseName"></td>
+</tr>
+<tr>
+<td>Gender :</td>
+<td>
+<input type="radio" name="gender" id="male" value="Male">Male<br />
+<input type="radio" name="gender" id="female" value="Female">Female
+</td>
+</tr>
+<tr>
+<td>Comments :</td>
+<td>
+<input type="radio" name="comments" id="like" value="Like">Like<br /> 
+<input type="radio" name="comments" id="dontLike" value="DontLike">Don't Like</td>
+</tr>
+<tr>
+<td colspan="3" align="center"><input type="button" id="submit" value="Submit" onclick="validate()"></td>
+</tr>
+<tr>
+<td colspan="3"><span id=errUserName>Please Enter Your Name</span></div></td>
+</tr>
+<tr>
+<td colspan="3"><span id=errGender>Please Select Your Gender</span></td>
+</tr>
+<tr>
+<td colspan="3"><span id=errComments>Please Select Your comment</span></div></td>
+</tr>
+
+</table>
+</form>
+</body>
+</html>
+
+------------------------------------------------------------------------------------------------------------
+
+function validate()
+{
+	
+var Uname = document.forms[0].elements[0].value
+var errUserName = document.getElementById("errUserName")
+var errGender = document.getElementById("errGender")
+var errComments = document.getElementById("errComments")
+			
+if(Uname.length == 0)
+	{
+		errUserName.innerHTML = "Name Should Not Be Empty"
+	        
+	}
+else if(Uname.length != 0)
+	{
+			errUserName.innerHTML = "Name : " + Uname
+	}
+	
+with (document.forms[0])
+	{
+		if(gender[0].checked||gender[1].checked)
+		{
+			var gen=gender[0].checked?gender[0].value:gender[1].value
+			errGender.innerHTML = "Your Gender is : " + gen
+	        
+		}
+		else{
+			
+			errGender.innerHTML = "Gender Should Not Be Empty"
+		}
+	
+		if(comments[0].checked||comments[1].checked)
+		{
+			var com=comments[0].checked?comments[0].value:comments[1].value
+			errComments.innerHTML = "Your Comment is : " + com
+	        
+		}
+		else{
+			
+			errComments.innerHTML = "Comment Should Not Be Empty"
+		}
+		
+	}
+}
